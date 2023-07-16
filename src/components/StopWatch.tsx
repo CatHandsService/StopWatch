@@ -1,25 +1,9 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../index'
 
 export const StopWatch = () => {
   const [time, setTime] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
-  const timerRef = useRef<number | null>(null);
-
-  // const Timer = () => {
-  //   if (isRunning) {
-  //     clearInterval(timerRef.current!);
-  //     timerRef.current = null;
-  //   } else {
-  //     const startTime = Date.now() - time * 1000;
-  //     timerRef.current = window.setInterval(() => {
-  //       const elapsed = (Date.now() - startTime) / 1000;
-  //       setTime(elapsed);
-  //     }, 100);
-  //   }
-  //   setIsRunning(!isRunning);
-  // };
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
