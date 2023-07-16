@@ -42,7 +42,7 @@ export const StopWatch = () => {
 
   return (
     <div>
-      <h1>Stopwatch</h1>
+      <h1>Stopwatch App</h1>
       <div>{formatTime(time)}</div>
       {!isRunning ? (
         <button onClick={handleStart}>Start</button>
