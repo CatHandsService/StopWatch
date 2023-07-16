@@ -1,4 +1,6 @@
+import { style } from '@macaron-css/core';
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 export const StopWatch = () => {
   const [time, setTime] = useState(0);
@@ -13,18 +15,8 @@ export const StopWatch = () => {
       }, 1000);
     }
 
-    return () => {
-      clearInterval(intervalId);
-    };
+    return () => clearInterval(intervalId);
   }, [isRunning]);
-
-  const handleStart = () => {
-    setIsRunning(true);
-  };
-
-  const handleStop = () => {
-    setIsRunning(false);
-  };
 
   const handleReset = () => {
     setTime(0);
@@ -32,24 +24,64 @@ export const StopWatch = () => {
   };
 
   const formatTime = (timeInSeconds: number) => {
+    const hours = Math.floor(timeInSeconds / 1440)
+      .toString()
+      .padStart(2, '0');
     const minutes = Math.floor(timeInSeconds / 60)
       .toString()
       .padStart(2, '0');
-    const seconds = (timeInSeconds % 60).toString().padStart(2, '0');
+    const seconds = (timeInSeconds % 60)
+      .toString()
+      .padStart(2, '0');
 
-    return `${minutes}:${seconds}`;
+    return `${hours}:${minutes}:${seconds}`;
   };
 
+  const H1 = styled.h1`
+    font-size: 70px;
+    text-align: center;
+  `;
+
+  const Container = styled.div`
+    width: 600px;
+    margin: 80px auto 0;
+  `;
+
+  const Time = styled.div`
+    width: 100%;
+    line-height: 2;
+    border: 2px double #000;
+    border-radius: 10px;
+    font-size: 72px;
+    font-weight: bold;
+    text-align: center;
+  `;
+
+  const ButtonWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+  `;
+
+  const Button = styled.button`
+    width: 200px;
+    height: 50px;
+    margin: 20px 10px 0;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 24px;
+  `;
+
   return (
-    <div>
-      <h1>Stopwatch App</h1>
-      <div>{formatTime(time)}</div>
-      {!isRunning ? (
-        <button onClick={handleStart}>Start</button>
-      ) : (
-        <button onClick={handleStop}>Stop</button>
-      )}
-      <button onClick={handleReset}>Reset</button>
-    </div>
+    <Container>
+      <H1>Stopwatch App</H1>
+      <Time>{formatTime(time)}</Time>
+      <ButtonWrapper>
+        {!isRunning
+          ? <Button onClick={()=>{setIsRunning(true)}}>Start</Button>
+          : <Button onClick={()=>{setIsRunning(false)}}>Stop</Button>
+        }
+        <Button onClick={handleReset}>Reset</Button>
+      </ButtonWrapper>
+    </Container>
   );
 }
