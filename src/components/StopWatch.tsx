@@ -1,4 +1,3 @@
-import { style } from '@macaron-css/core';
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
