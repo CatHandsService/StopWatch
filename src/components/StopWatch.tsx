@@ -25,10 +25,14 @@ export const StopWatch = () => {
     setIsRunning(false);
   };
 
+  const padTime = (targetTime: number, digits: number) => {
+    return targetTime.toString().padStart(digits, '0');
+  };
+
   const formatTime = (time: number) => {
-    const hours = Math.floor(time / 3600).toString().padStart(2, '0');
-    const minutes = Math.floor((time % 3600) / 60).toString().padStart(2, '0');
-    const seconds = Math.floor(time % 60).toString().padStart(2, '0');
+    const hours = padTime(Math.floor(time / 3600), 2);
+    const minutes = padTime(Math.floor((time % 3600) / 60), 2);
+    const seconds = padTime(Math.floor(time % 60), 2);
     return `${hours}:${minutes}:${seconds}`;
   };
 
