@@ -77,6 +77,11 @@ export const StopWatch = () => {
       >
         Reset
       </button>
+      <div className='description'>
+        Technology used：<br/>
+        　React+TypeScript<br/>
+        　CSS
+      </div>
     </div>
   );
 }
