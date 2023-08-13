@@ -16,7 +16,6 @@ code {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* border: 1px solid #444; */
 }
 
 .h1 {
@@ -32,12 +31,17 @@ code {
 }
 
 .timer {
-    width: 200px;
+    width: 250px;
+    min-width: fit-content;
     height: 100px;
     margin-top: 20px;
+    padding: 0 10px;
     background-color: #fff;
-    border-radius: 5px;
+    border: 2px double #000;
+    border-radius: 10px;
     font-size: 40px;
+    width: 100%;
+    line-height: 2;
 }
 
 .reset {
@@ -61,4 +65,14 @@ code {
     margin-top: 80px;
     padding: 10px;
     border-top: 2px solid #ccc;
+}
+
+@media (648px >= width) {
+    .container {
+        max-width: 648px;
+        width: 60%;
+    }
+    .description{
+        text-align: center;
+    }
 }
