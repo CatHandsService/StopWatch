@@ -6,7 +6,7 @@ export const sp = (
   first: Styles<object>,
   ...interpolations: any[]
 ) => css`
-  @media (max-width: 560px) {
+  @media (max-width: 648px) {
       ${css(first, ...interpolations)}
   }
 `;
@@ -15,7 +15,7 @@ export const tab = (
   first: Styles<object>,
   ...interpolations: any[]
 ) => css`
-  @media (min-width: 561px) and (max-width: 1024px) {
+  @media (min-width: 649px) and (max-width: 1024px) {
       ${css(first, ...interpolations)}
   }
 `;
